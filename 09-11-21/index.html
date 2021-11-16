@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratica AJAX - JSON</title>
+</head>
+<body>
+    <h1>Obtendo dados de um JSON</h1>
+    <h2>Usando o XMLHttpRequest - Requisição AJAX</h2>
+    <hr />
+    <p id="cliente"></p>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    let cliente = JSON.parse(xhr.responseText);
+                    document.getElementById("cliente").innerHTML = `
+                    <h3>Dados do cliente</h3>
+                    <p>Data do cadastro: ${new Date(cliente.dataCadastro)}</p>
+                    <p>Nome: ${cliente.nome}</p>
+                    <p>Idade: ${cliente.idade} anos</p>
+                    <p>Cidade: ${cliente.cidade}</p>
+                    <hr/>
+                    <h4>Skillz</h4>
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tempo</th>
+                        </tr>
+                        <tr>
+                            <td>${cliente.linguagens[0]['nome']}</td>
+                            <td>${cliente.linguagens[0]['anos']}</td>
+                        </tr>
+                        <tr>
+                            <td>${cliente.linguagens[1].nome}</td>
+                            <td>${cliente.linguagens[1].anos}</td>
+                        </tr>
+                        <tr>
+                            <td>${cliente.linguagens[2].nome}</td>
+                            <td>${cliente.linguagens[2].anos}</td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    `
+                }
+            }
+        };
+        xhr.open("POST", "cliente.json", true);
+        xhr.send();
+    </script>
+    
+</body>
+</html>

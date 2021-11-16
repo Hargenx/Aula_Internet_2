@@ -1,0 +1,12 @@
+{
+    "clienteId": 1,
+    "dataCadastro": "2021-11-09",
+    "nome": "Raphael",
+    "idade": 37,
+    "cidade": "Rio de Janeiro",
+    "linguagens":[
+        { "nome": "Java", "anos": 20 },
+        { "nome": "Python", "anos": 15 },
+        { "nome": "JavaScript", "anos": 20 }
+    ]
+}
